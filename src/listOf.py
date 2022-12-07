@@ -1,3 +1,37 @@
+list_of_yes = {
+    "yes",
+    "yep",
+    "yeah",
+    "yup",
+    "yup yup",
+    "ye",
+    "yea",
+    "yea yea",
+}
+ 
+list_of_no = {
+    "no",
+    "nope",
+    "nope nope",
+    "nah",
+    "nah nah",
+    "no no",
+    "no no no",
+    "no no no no",
+    "no no no no no",
+    "no no no no no no",
+    "no no no no no no no",
+    "no no no no no no no no",
+    "no no no no no no no no no",
+    "no no no no no no no no no no",
+    "no no no no no no no no no no no",
+    "no no no no no no no no no no no no",
+    "no no no no no no no no no no no no no",
+    "no no no no no no no no no no no no no no",
+    "no no no no no no no no no no no no no no no",
+    "no no no no no no no no no no no no no no no no",
+}
+
 list_of_clear = {
     "clear",
     "clear screen",
@@ -41,6 +75,14 @@ list_of_exit = {
     "stop jva",
     "stop jva program",
     "stop jva the program",
+    "halt",
+    "halt program",
+    "halt the program",
+    "halt to terminal",
+    "halt to the terminal",
+    "halt to the terminal screen",
+    "halt to terminal screen",
+    
 
 }
 
@@ -127,3 +169,12 @@ list_of_what_is_your_name_response = {
     "My name is JVA, your personal assistant",
     "My name is JVA, short for Jakes Virtual Assistant",
 }
+
+list_of_shutdowm = {
+    "shutdown computer at ",
+}
+
+list_of_shutdowm_response = {
+    "Shutting down computer at ",
+}
+

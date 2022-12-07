@@ -7,6 +7,7 @@ import speech_recognition as sr
 
 import listOf as lof
 def clear():
+    return
     if os.name == 'nt':
         os.system('cls')
     if os.name == 'posix':
@@ -37,16 +38,12 @@ def reconize_speech():
         audio = r.listen(source)
 
     try:
-        text_split = r.recognize_google(audio).split("listening...")
-
         text = r.recognize_google(audio)
-        print("you said : {}".format(text_split[1]))
-        speak("you said : {}".format(text_split[1]))
+        print("you said : {}".format(text))
+        speak("you said : {}".format(text))
 
-        # ask if thats what you said
-        # if yes then return text_split[1]
-        # if no then
-
+        #! ASKING IF THATS WHAT YOU SAID
+        clear()
         speak("is that what you said?")
         try:
             rb = sr.Recognizer()
@@ -56,41 +53,25 @@ def reconize_speech():
                 textb = rb.recognize_google(audio)
             
             if textb == "yes":
-                return text_split[1]
+                print("yes")
+                return text
+            elif textb == "no":
+                print("no")
+                speak("re listening...")
+                reconize_speech()
             else:
+                print("Sorry could not recognize what you said")
+                speak("You said: " + textb + " Sorry could not recognize what you said, please try again, i only reconize yes or no")
                 reconize_speech()
         except:
             print("Sorry could not recognize what you said")
             speak("Sorry could not recognize what you said, please try again")
             reconize_speech()
+        #! END ASKING IF THATS WHAT YOU SAID
     except:
-        try:
-            text = r.recognize_google(audio)
-            print("you said : {}".format(text))
-            speak("you said : {}".format(text))
-
-            speak("is that what you said?")
-            try:
-                rb = sr.Recognizer()
-                with sr.Microphone() as source:
-                    print("listening... rb")
-                    audio = rb.listen(source)
-                    textb = rb.recognize_google(audio)
-                
-                if textb == "yes":
-                    return text
-                else:
-                    reconize_speech()
-            except:
-                print("Sorry could not recognize what you said")
-                speak("Sorry could not recognize what you said, please try again")
-                reconize_speech()
-
-        except:                
-            print("Sorry could not recognize what you said")
-            speak("Sorry could not recognize what you said")
-
-            return "{ERR1}Sorry could not recognize what you said"
+        print("Sorry could not recognize what you said")
+        speak("Sorry could not recognize what you said, please try again")
+        reconize_speech()
     pass
 
 
@@ -102,18 +83,10 @@ def main():
     while True:
         what_said = reconize_speech()
         try:
-            if what_said.split("{ERR1}")[0] == "":
-                print("error")
+            print("what_said: " + what_said)
         except:
-            print("no error")
-            pass
-        # if what_said == "clear":
-        #     clear()
-        # if what_said == "exit":
-        #     exit()
-        # if what_said == "hello":
-        #     print("hello")
-        #     speak("hello")
+            print("what_said: {ERR2} what_said")
+
 
         for i in lof.list_of_clear:
             if what_said == i:
@@ -121,6 +94,7 @@ def main():
                 break
         for i in lof.list_of_exit:
             if what_said == i:
+                speak("adios, amigo!")
                 exit()
                 break
         for i in lof.list_of_hello:
