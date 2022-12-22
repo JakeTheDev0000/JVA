@@ -1,4 +1,4 @@
-list_of_yes = {
+list_of_yes = [
     "yes",
     "yep",
     "yeah",
@@ -7,9 +7,20 @@ list_of_yes = {
     "ye",
     "yea",
     "yea yea",
-}
+    "yea yea yea",
+    "yea yea yea yea",
+    "yea yea yea yea yea",
+    "yup",
+    "yup yup",
+    "yup yup yup",
+    "yup yup yup yup",
+    "yup yup yup yup yup",
+    "sure",
+    "sure sure",
+    "sure sure sure",
+]
  
-list_of_no = {
+list_of_no = [
     "no",
     "nope",
     "nope nope",
@@ -25,14 +36,9 @@ list_of_no = {
     "no no no no no no no no no",
     "no no no no no no no no no no",
     "no no no no no no no no no no no",
-    "no no no no no no no no no no no no",
-    "no no no no no no no no no no no no no",
-    "no no no no no no no no no no no no no no",
-    "no no no no no no no no no no no no no no no",
-    "no no no no no no no no no no no no no no no no",
-}
+]
 
-list_of_clear = {
+list_of_clear = [
     "clear",
     "clear screen",
     "clear the screen",
@@ -43,9 +49,9 @@ list_of_clear = {
     "wipe the terminal",
     "wipe the terminal screen",
     "wipe screen",
-}
+]
 
-list_of_exit = {
+list_of_exit = [
     "exit",
     "exit program",
     "exit the program",
@@ -84,10 +90,10 @@ list_of_exit = {
     "halt to terminal screen",
     
 
-}
+]
 
-list_of_hello = {
-    "hello",
+list_of_hello = [
+    "hello there",
     "hello there",
     "hi",
     "hi there",
@@ -108,9 +114,10 @@ list_of_hello = {
     "what is up",
     "what is up jva",
     "what is up there",
-}
+    "hello",
+]
 
-list_of_hello_response = {
+list_of_hello_response = [
     "hello",
     "hello there",
     "hi",
@@ -125,9 +132,9 @@ list_of_hello_response = {
     "what's up there",
     "what is up",
     "what is up there",
-}
+]
 
-list_of_hows_it_going = {
+list_of_hows_it_going = [
     "how are you",
     "how are you doing",
     "how are you doing today",
@@ -143,11 +150,13 @@ list_of_hows_it_going = {
     "how are you doing today",
     "how are you doing today jva",
     "how are you doing today there",
-}
+    "how you doing",
+    "how you doing jva",
+]
 
-list_of_hows_it_going_response = {
+list_of_hows_it_going_response = [
     "I am fine",
-    "I am good",
+    "I am good, thanks",
     "I am doing great, thanks for asking",
     "I am doing good, thanks for asking",
     "I am doing fine, thanks for asking",
@@ -155,26 +164,27 @@ list_of_hows_it_going_response = {
     "I am doing fantastic",
     "I am doing fantastic, thanks for asking",
     "I am doing good",
-}
+]
 
-list_of_what_is_your_name = {
+list_of_what_is_your_name = [
     "what is your name",
     "what's is your name",
     "whats your name",
-    "what's the name"
-}
+    "what's the name",
+    "what's your name"
+]
 
-list_of_what_is_your_name_response = {
+list_of_what_is_your_name_response = [
     "My name is JVA",
     "My name is JVA, your personal assistant",
     "My name is JVA, short for Jakes Virtual Assistant",
-}
+]
 
-list_of_shutdowm = {
+list_of_shutdowm = [
     "shutdown computer at ",
-}
+]
 
-list_of_shutdowm_response = {
+list_of_shutdowm_response = [
     "Shutting down computer at ",
-}
+]
 
