@@ -5,6 +5,11 @@ from gtts import gTTS as gtts
 from playsound import playsound as play
 import speech_recognition as sr
 
+#! PLUGINS
+import plugin_mgr as plugmgr
+
+
+
 import listOf as lof
 def clear():
     return
@@ -31,6 +36,7 @@ def speak(text):
 
 #  cant wait to refactor this later :D
 def reconize_speech():
+    plugmgr.razer.change_color("ff0000")
     r = sr.Recognizer()
     
     with sr.Microphone() as source:
@@ -72,6 +78,7 @@ def reconize_speech():
                 reconize_speech()
             #! END ASKING IF THATS WHAT YOU SAID
         else:
+            print(f"ITS {text}")
             return text
     except:
         print("Sorry could not recognize what you said")
@@ -89,7 +96,8 @@ def main():
     print("Hello, I am JVA, your personal assistant.")
     while True:
         understand_what_user_said = False
-        what_said = reconize_speech()
+        what_said = str(reconize_speech())
+        plugmgr.razer.Rainbow_road()
         try:
             print("what_said: " + what_said)
         except Exception as e:
@@ -120,6 +128,16 @@ def main():
             understand_what_user_said = True
             pass
 
+        #! PLUGINS 
+        #if what_said starts with "command send":
+        if what_said.startswith("command send ") or what_said.startswith("command sand"):
+            print("command send")
+            speak("sending command")
+            plugmgr.bash.bash_this(what_said)
+            understand_what_user_said = True
+            pass
+
+        #! END PLUGINS
         if understand_what_user_said == False:
             print("did not understand what you said")
             speak("I did not understand what you said, please try again")
