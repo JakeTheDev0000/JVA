@@ -130,7 +130,7 @@ def main():
 
         #! PLUGINS 
         #if what_said starts with "command send":
-        if what_said.startswith("command send ") or what_said.startswith("command sand"):
+        if what_said.startswith("command send ") or what_said.startswith("command sand") or what_said.startswith("commands sand"):
             print("command send")
             speak("sending command")
             plugmgr.bash.bash_this(what_said)
