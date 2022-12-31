@@ -61,3 +61,16 @@ class bash:
         print(e)
         print()
         pass
+
+class chuck_norris:
+    try:
+        def get_joke():
+            from plugins.chuck_norris_jokes import PLUGGet_joke
+
+            return PLUGGet_joke()
+    except Exception as e:
+        print("error importing chuck_norris_jokes.py")
+        print()
+        print(e)
+        print()
+        pass

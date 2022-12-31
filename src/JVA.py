@@ -146,6 +146,10 @@ def main():
             understand_what_user_said = True
             pass
 
+        if what_said in lof.chuck_norris_joke:
+            speak(plugmgr.chuck_norris.get_joke())
+            understand_what_user_said = True
+
         #! END PLUGINS
         if understand_what_user_said == False:
             plugmgr.razer.error_mode()
@@ -159,8 +163,8 @@ def main():
 
 def test():
     print("test")
-    plugmgr.razer.change_brightness(100)
 
+    speak(plugmgr.chuck_norris.get_joke())
     exit()
 if __name__ == '__main__':
     # test()

@@ -193,4 +193,12 @@ list_of_shutdowm_response = [
 ]
 
 
+#! PLUGINS
+
+chuck_norris_joke = [
+    "Chuck Norris",
+    "Chuck Norris joke",
+    "Chuck Norris jokes"
+]
+
 
