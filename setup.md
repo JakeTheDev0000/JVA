@@ -1,3 +1,5 @@
+### ***MAKE SURE PIP3 IS INSTALLED ON YOUR SYSTEM***
+
 # Automatic way
 
 just run the setup.sh file
