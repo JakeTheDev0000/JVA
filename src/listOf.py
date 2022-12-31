@@ -152,6 +152,10 @@ list_of_hows_it_going = [
     "how are you doing today there",
     "how you doing",
     "how you doing jva",
+    "what's up",
+    "what's up there",
+    "what is up",
+    "what is up there",
 ]
 
 list_of_hows_it_going_response = [

@@ -5,14 +5,19 @@ from gtts import gTTS as gtts
 from playsound import playsound as play
 import speech_recognition as sr
 
+#! list of sayings
+import listOf as lof
+
 #! PLUGINS
 import plugin_mgr as plugmgr
 
+plugmgr.razer.startup_jva()
+time.sleep(1.5)
 
 
-import listOf as lof
+
+
 def clear():
-    return
     if os.name == 'nt':
         os.system('cls')
     if os.name == 'posix':
@@ -36,7 +41,7 @@ def speak(text):
 
 #  cant wait to refactor this later :D
 def reconize_speech():
-    plugmgr.razer.change_color("ff0000")
+    plugmgr.razer.rec_mode()
     r = sr.Recognizer()
     
     with sr.Microphone() as source:
@@ -73,6 +78,7 @@ def reconize_speech():
                     speak("You said: " + textb + " Sorry could not recognize what you said, please try again")
                     reconize_speech()
             except:
+                plugmgr.razer.error_mode()
                 print("Sorry could not recognize what you said")
                 speak("Sorry could not recognize what you said, please try again")
                 reconize_speech()
@@ -81,6 +87,7 @@ def reconize_speech():
             print(f"ITS {text}")
             return text
     except:
+        plugmgr.razer.error_mode()
         print("Sorry could not recognize what you said")
         speak("Sorry could not recognize what you said, please try again")
         reconize_speech()
@@ -97,7 +104,7 @@ def main():
     while True:
         understand_what_user_said = False
         what_said = str(reconize_speech())
-        plugmgr.razer.Rainbow_road()
+        plugmgr.razer.normal_mode()
         try:
             print("what_said: " + what_said)
         except Exception as e:
@@ -117,11 +124,13 @@ def main():
             speak(lof.list_of_hello_response[random.randint(0, len(lof.list_of_hello_response) - 1)])
             understand_what_user_said = True
             pass
+
         elif what_said in lof.list_of_hows_it_going:
             print("how are you")
             speak(lof.list_of_hows_it_going_response[random.randint(0, len(lof.list_of_hows_it_going_response) - 1)])
             understand_what_user_said = True
             pass
+
         elif what_said in lof.list_of_what_is_your_name:
             print("what is your name")
             speak(lof.list_of_what_is_your_name_response[random.randint(0, len(lof.list_of_what_is_your_name_response) - 1)])
@@ -139,6 +148,7 @@ def main():
 
         #! END PLUGINS
         if understand_what_user_said == False:
+            plugmgr.razer.error_mode()
             print("did not understand what you said")
             speak("I did not understand what you said, please try again")
             pass
@@ -149,24 +159,11 @@ def main():
 
 def test():
     print("test")
-    import nltk
-
-    # Get the user's input
-    user_input = input("Enter your English input: ")
-
-    # Tokenize the input
-    tokens = nltk.word_tokenize(user_input)
-
-    # Tag the tokens with their part-of-speech
-    tags = nltk.pos_tag(tokens)
-
-    # Print the tagged tokens
-    print(tags)
-
+    plugmgr.razer.change_brightness(100)
 
     exit()
-    pass
 if __name__ == '__main__':
+    # test()
     print('JVA.py is being run directly')
     print("checking os...")
     print(os.name)

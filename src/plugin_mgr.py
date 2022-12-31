@@ -1,6 +1,3 @@
-
-from plugins import bash_this as bash
-
 class razer:
     try:
         def change_color(hex_color):
@@ -15,6 +12,35 @@ class razer:
             razerPlug.PLUGRainbow_road(facing)
             pass
 
+        def change_brightness(brightness):
+            from plugins.razer_plug import PLUGChange_Brightness 
+
+            PLUGChange_Brightness(brightness)
+            pass
+        
+        def rec_mode():
+            from plugins.razer_plug import PLUGRecording_mode_effect
+
+            PLUGRecording_mode_effect()
+            pass
+
+        def normal_mode():
+            from plugins.razer_plug import PLUGNormal_mode_effect
+
+            PLUGNormal_mode_effect()
+            pass
+
+        def error_mode():
+            from plugins.razer_plug import PLUGError_effect
+
+            PLUGError_effect()
+            pass
+        
+        def startup_jva():
+            from plugins.razer_plug import PLUGstartup_jva_effect
+
+            PLUGstartup_jva_effect()
+            pass
     except Exception as e:
         print("error importing razer_plug.py")
         print()
