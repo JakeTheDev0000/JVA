@@ -1,3 +1,9 @@
+# MAIN FILE FOR JVA
+# MADE BY JAKE (MESSYCODE)
+# COPYRIGHT (c) 2023
+# MIT 
+
+import sys
 import os
 import time
 import random
@@ -11,8 +17,48 @@ import listOf as lof
 #! PLUGINS
 import plugin_mgr as plugmgr
 
-plugmgr.razer.startup_jva()
-time.sleep(1.5)
+args = sys.argv
+
+wait_for_keyboard_animations = True
+keyboard_animations = True
+
+# Argument Manager \/
+for arg in args:
+    arg = str(arg)
+    if arg.startswith("-pkd."):
+        value = str(arg.replace("-pkd.", ""))
+        value.lower()            
+        if value == "true":
+            wait_for_keyboard_animations = False
+        elif value == "false":
+            wait_for_keyboard_animations = True
+        else:
+            print("not a valid answer")
+            exit(14)
+    if arg.startswith("-nka"):
+        value = str(arg.replace("-nka.", ""))
+        value.lower()
+        if value == "true":
+            keyboard_animations = False
+        elif value == "false":
+            keyboard_animations = True
+        else:
+            print("not a valid answer")
+            exit(14)
+    if arg.startswith("--help") or arg.startswith("-h"):
+        print("===================HELP===================")
+        print("to enter the parm add (.), example: -pkd.true or -pkd.false")
+        print("--help; -h : Brings up this screen")
+        print("-pkd       : Pass Keyboard Delay, Wont wait for animations")
+        print("-nka       : No Keyboard Animations")
+        exit()
+
+
+
+if keyboard_animations == True:
+    plugmgr.razer.startup_jva()
+if wait_for_keyboard_animations == True:
+    time.sleep(1.5)
 
 
 
@@ -41,20 +87,24 @@ def speak(text):
 
 #  cant wait to refactor this later :D
 def reconize_speech():
-    plugmgr.razer.rec_mode()
+    if keyboard_animations == True:
+        plugmgr.razer.rec_mode()
     r = sr.Recognizer()
     
     with sr.Microphone() as source:
+        r.adjust_for_ambient_noise(source, 1)
         clear()
         print("Speak anything")
         # speak("Speak anything")
-        audio = r.listen(source)
+        audio_obj = r.listen(source)
+        print(audio_obj)
 
     try:
-        text = r.recognize_google(audio)
-        print("you said : {}".format(text))
+        print("reconizing...")
+        query = r.recognize_google(audio_obj)
+        print("you said : {}".format(query))
         if clarify_each_time:
-            speak("you said : {}".format(text))
+            speak("you said : {}".format(query))
 
             #! ASKING IF THATS WHAT YOU SAID
             clear()
@@ -63,12 +113,12 @@ def reconize_speech():
                 rb = sr.Recognizer()
                 with sr.Microphone() as source:
                     print("listening... rb")
-                    audio = rb.listen(source)
-                    textb = rb.recognize_google(audio)
+                    audio_obj = rb.listen(source)
+                    textb = rb.recognize_google(audio_obj)
                 
                 if textb in lof.list_of_yes:
                     print("yes")
-                    return text
+                    return query
                 elif textb in lof.list_of_no:
                     print("no")
                     speak("re listening...")
@@ -78,19 +128,27 @@ def reconize_speech():
                     speak("You said: " + textb + " Sorry could not recognize what you said, please try again")
                     reconize_speech()
             except:
-                plugmgr.razer.error_mode()
+                if keyboard_animations == True:
+                    plugmgr.razer.error_mode()
                 print("Sorry could not recognize what you said")
                 speak("Sorry could not recognize what you said, please try again")
                 reconize_speech()
             #! END ASKING IF THATS WHAT YOU SAID
         else:
-            print(f"ITS {text}")
-            return text
-    except:
-        plugmgr.razer.error_mode()
+            print(f"ITS {query}")
+            return query
+    except sr.UnknownValueError:
+        if keyboard_animations == True:
+            plugmgr.razer.error_mode()
         print("Sorry could not recognize what you said")
-        speak("Sorry could not recognize what you said, please try again")
+        speak("Sorry could not recognize what you said, please try again. RS-func")
         reconize_speech()
+    except sr.RequestError:
+        speak("Make Sure that you have a good Internet connection")
+    except Exception as e:
+        print(e)
+        print("goodluck....")
+        exit(1)
     pass
 
 
@@ -104,7 +162,8 @@ def main():
     while True:
         understand_what_user_said = False
         what_said = str(reconize_speech())
-        plugmgr.razer.normal_mode()
+        if keyboard_animations == True:
+            plugmgr.razer.normal_mode()
         try:
             print("what_said: " + what_said)
         except Exception as e:
@@ -138,7 +197,7 @@ def main():
             pass
 
         #! PLUGINS 
-        #if what_said starts with "command send":
+        # I know i could have just use LOF for bash_this... but for some ever reason that just wont work
         if what_said.startswith("command send ") or what_said.startswith("command sand") or what_said.startswith("commands sand"):
             print("command send")
             speak("sending command")
@@ -152,7 +211,8 @@ def main():
 
         #! END PLUGINS
         if understand_what_user_said == False:
-            plugmgr.razer.error_mode()
+            if keyboard_animations == True:
+                plugmgr.razer.error_mode()
             print("did not understand what you said")
             speak("I did not understand what you said, please try again")
             pass
@@ -164,7 +224,9 @@ def main():
 def test():
     print("test")
 
-    speak(plugmgr.chuck_norris.get_joke())
+    for index, name in enumerate(sr.Microphone.list_microphone_names()):
+        print("Microphone with name \"{1}\" found for Microphone(device_index={0})".format(index, name))
+
     exit()
 if __name__ == '__main__':
     # test()

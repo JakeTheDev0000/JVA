@@ -1,3 +1,8 @@
+# THIS IS THE PLUGIN-MANAGER, THIS CONTROLS THE PLUGINS 
+# MADE BY JAKE (MESSYCODE)
+# COPYRIGHT (c) 2023
+# MIT 
+
 class razer:
     try:
         def change_color(hex_color):

@@ -1,3 +1,8 @@
+# THIS LIST OF "COMMANDS" THE USER CAN SAY
+# MADE BY JAKE (MESSYCODE)
+# COPYRIGHT (c) 2023
+# MIT 
+
 list_of_yes = [
     "yes",
     "yep",
@@ -156,6 +161,7 @@ list_of_hows_it_going = [
     "what's up there",
     "what is up",
     "what is up there",
+    "how's your day"
 ]
 
 list_of_hows_it_going_response = [
@@ -194,6 +200,14 @@ list_of_shutdowm_response = [
 
 
 #! PLUGINS
+
+bash_this = [
+    "command send",
+    "commands send",
+    "command sand",
+    "commands sand",
+    "apple"
+]
 
 chuck_norris_joke = [
     "Chuck Norris",
