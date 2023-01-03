@@ -1,3 +1,8 @@
+# controls the keyboard colors and effects 
+# MADE BY JAKE (MESSYCODE)
+# COPYRIGHT (c) 2023
+# Apache License 2.0 
+
 import os 
 import time
 

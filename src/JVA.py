@@ -1,7 +1,7 @@
 # MAIN FILE FOR JVA
 # MADE BY JAKE (MESSYCODE)
 # COPYRIGHT (c) 2023
-# MIT 
+# Apache License 2.0 
 
 import sys
 import os

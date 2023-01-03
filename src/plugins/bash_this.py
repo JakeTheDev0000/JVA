@@ -1,3 +1,8 @@
+# runs a bash command
+# MADE BY JAKE (MESSYCODE)
+# COPYRIGHT (c) 2023
+# Apache License 2.0 
+
 import os
 
 def bash_this(command):

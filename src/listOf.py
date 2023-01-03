@@ -1,7 +1,7 @@
 # THIS LIST OF "COMMANDS" THE USER CAN SAY
 # MADE BY JAKE (MESSYCODE)
 # COPYRIGHT (c) 2023
-# MIT 
+# Apache License 2.0 
 
 list_of_yes = [
     "yes",

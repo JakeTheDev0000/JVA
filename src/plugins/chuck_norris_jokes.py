@@ -1,3 +1,8 @@
+# a joke plugin, gets a chuck norris joke then returns it (MUST HAVE INTERNET)
+# MADE BY JAKE (MESSYCODE)
+# COPYRIGHT (c) 2023
+# Apache License 2.0 
+
 import requests
 def PLUGGet_joke():
     """ Gets a Chuck norris joke, returns the joke """

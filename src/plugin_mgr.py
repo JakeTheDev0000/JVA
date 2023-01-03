@@ -1,7 +1,7 @@
 # THIS IS THE PLUGIN-MANAGER, THIS CONTROLS THE PLUGINS 
 # MADE BY JAKE (MESSYCODE)
 # COPYRIGHT (c) 2023
-# MIT 
+# Apache License 2.0 
 
 class razer:
     try:
